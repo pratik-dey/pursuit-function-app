@@ -4,3 +4,9 @@ displayName: Sample Test
 testPlan: SampleApp.jmx
 description: 'Load test the sample app'
 engineInstances: 1
+env:
+  - name: webapp
+    value: pursuitloadfcn.azurewebsites.net
+secrets:
+  - name: functionkey
+    value: https://loadtest-kv-01.vault.azure.net/secrets/functionkey/b8842b70aaf649fd96c14abbf7839d62

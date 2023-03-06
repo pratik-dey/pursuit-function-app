@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.4.3">
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.5">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Azure Load Testing Quickstart" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -18,10 +18,10 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">5</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">10</stringProp>
+        <stringProp name="ThreadGroup.num_threads">2</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">4</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">20</stringProp>
+        <stringProp name="ThreadGroup.duration">10</stringProp>
         <stringProp name="ThreadGroup.delay">1</stringProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
@@ -30,7 +30,7 @@
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">pursuitloadfcn.azurewebsites.net</stringProp>
+          <stringProp name="HTTPSampler.domain">${udv_webapp}</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
@@ -49,18 +49,24 @@
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">x-functions-key</stringProp>
-                <stringProp name="Header.value">${udv_functionkey}</stringProp>
+                <stringProp name="Header.value">${WEB_CREDENTIALS}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
           <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
-              <elementProp name="udv_functionKey" elementType="Argument">
-                <stringProp name="Argument.name">udv_functionkey</stringProp>
+              <elementProp name="WEB_CREDENTIALS" elementType="Argument">
+                <stringProp name="Argument.name">WEB_CREDENTIALS</stringProp>
                 <stringProp name="Argument.value">${__GetSecret(functionkey)}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <stringProp name="Argument.desc">Value for the function key</stringProp>
+              </elementProp>
+              <elementProp name="udv_webapp" elementType="Argument">
+                <stringProp name="Argument.name">udv_webapp</stringProp>
+                <stringProp name="Argument.value">${__BeanShell( System.getenv(&quot;webapp&quot;) )}</stringProp>
+                <stringProp name="Argument.desc">Web App URL</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
           </Arguments>

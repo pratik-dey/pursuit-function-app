@@ -44,7 +44,7 @@ jobs:
               "value": "${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net"
               }
             ] 
-          creds: ${{ secrets.functionkey }}            
+          secrets: ${{ secrets.functionkey }}            
       
       - uses: actions/upload-artifact@v2
         with:

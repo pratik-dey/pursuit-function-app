@@ -58,7 +58,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="udv_functionkey" elementType="Argument">
                 <stringProp name="Argument.name">udv_functionkey</stringProp>
-                <stringProp name="Argument.value">${__GetSecret(FUNCTIONKEY)}</stringProp>
+                <stringProp name="Argument.value">${__GetSecret(functionkey)}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <stringProp name="Argument.desc">Value for the function key</stringProp>
               </elementProp>

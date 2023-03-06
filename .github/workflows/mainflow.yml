@@ -37,21 +37,6 @@ jobs:
           loadTestConfigFile: 'SampleApp.yaml'
           loadTestResource: ${{ env.LOAD_TEST_RESOURCE }}
           resourceGroup: ${{ env.LOAD_TEST_RESOURCE_GROUP }}
-          secrets: |
-            [
-              {
-               "name": "functionkey",
-               "value": "https://loadtest-kv-01.vault.azure.net/secrets/functionkey/b8842b70aaf649fd96c14abbf7839d62" 
-              }
-            ]
-      
-          env: |
-            [
-              {
-              "name": "webapp",
-              "value": "${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net"
-              }
-            ] 
           
       - uses: actions/upload-artifact@v2
         with:

@@ -48,7 +48,7 @@ jobs:
             [
               {
                "name": "functionkey",
-               "value": "${{ secrets.functionkey }}" 
+               "value": "https://loadtest-kv-01.vault.azure.net/secrets/functionkey/b8842b70aaf649fd96c14abbf7839d62" 
               }
             ]
       
